@@ -1,0 +1,29 @@
+{
+  "name": "node_app_with_angular4",
+  "version": "1.0.0",
+  "description": "This application is for creating api in node and mongo with frontend as angular 4",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "vikash2696"
+  },
+  "keywords": [
+    "Node",
+    "mongo",
+    "angular",
+    "express"
+  ],
+  "author": "vikash2696",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mongo": "^0.1.0",
+    "mongod": "^2.0.0",
+    "mongoose": "^4.13.2"
+  }
+}
