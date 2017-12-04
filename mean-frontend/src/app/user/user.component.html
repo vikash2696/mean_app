@@ -1,28 +1,46 @@
 <p>
   user works!
 </p>
+ <input type="button" (click)="openFormTest()" value="New">
+ <input type="button" (click)="HideRegisterForm()" value="List">
+<div *ngIf="showDiv">
+  <form [formGroup]=registerForm (ngSubmit)="registerData()">
+      <div class="form-field">
+        <input type="text" pInputText formControlName="name" placeholder="First Name"> 
+      </div>
+      <div class="form-field">
+        <input type="text" pInputText formControlName="address" placeholder="Last Name"> 
+      </div>
+      <div class="form-field">
+        <input type="text" pInputText formControlName="city" placeholder="Address"> 
+      </div>
+      <div class="form-field">
+        <button class ="cancel_btn" (click)="HideRegisterForm()" pButton type="button" label="Cancel">Cancel</button>
+        <button class ="save_btn" pButton type="submit" label="Save">Save</button>
+      </div>
+  </form>
+</div>
 <div class="list-content">
 
-<table>
-  <thead>
-  <tr>
-    <th style="width:10%">Name</th>
-    <th style="width:10%">City</th>
-    <th style="width:20%">Address</th>
-    <th style="width:10%">Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let c of users">
-    <td>{{c.name}}</td>
-    <td>{{c.city}}</td>
-    <td>{{c.address}}</td>
-    <td>  
-    </td>
-    <td>  
-    </td>
-  </tr>
-  </tbody>
-</table>
+ <!-- <p-dataTable [value]="users">
+    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"></p-column>
+</p-dataTable>  -->
+<input #gb type="text" placeholder="Global search">
+<p-dataTable #dt [value]="users" sortField="name" [sortOrder]="1" [sortableRowGroup]="false" 
+[rows]="10" [paginator]="true" [(first)]="first" [globalFilter]="gb">
+    <p-header>List of Users</p-header>
+    <p-footer>Choose from the list.</p-footer>
+    <p-column field="name" header="Name" sortable="true" ></p-column>
+    <p-column field="address" header="Address" sortable="true" ></p-column>
+    <p-column field="city" header="City" sortable="true"></p-column>
+    <p-column  header="Action">
+      <ng-template let-i="rowIndex" pTemplate="body">
+          <span (click)="userEdit(users,i)">Edit</span>
+      </ng-template>
+  </p-column>
+</p-dataTable>
+<!-- <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()">Get CSV data</button> -->
+
 </div>
+
 
