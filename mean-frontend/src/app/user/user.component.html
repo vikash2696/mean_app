@@ -1,6 +1,3 @@
-<p>
-  user works!
-</p>
  <input type="button" (click)="openFormTest()" value="New">
  <input type="button" (click)="HideRegisterForm()" value="List">
 <div *ngIf="showDiv">
@@ -15,27 +12,28 @@
         <input type="text" pInputText formControlName="city" placeholder="Address"> 
       </div>
       <div class="form-field">
+        <input type="text" hidden formControlName="_id"> 
+      </div>
+
+      <div class="form-field">
         <button class ="cancel_btn" (click)="HideRegisterForm()" pButton type="button" label="Cancel">Cancel</button>
-        <button class ="save_btn" pButton type="submit" label="Save">Save</button>
+        <button *ngIf="save" class ="save_btn" pButton type="submit" label="Save">Save</button>
+        <button *ngIf="update" class ="save_btn" pButton type="submit" label="Update">Update</button>
       </div>
   </form>
 </div>
 <div class="list-content">
 
- <!-- <p-dataTable [value]="users">
-    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"></p-column>
-</p-dataTable>  -->
-<input #gb type="text" placeholder="Global search">
-<p-dataTable #dt [value]="users" sortField="name" [sortOrder]="1" [sortableRowGroup]="false" 
-[rows]="10" [paginator]="true" [(first)]="first" [globalFilter]="gb">
-    <p-header>List of Users</p-header>
-    <p-footer>Choose from the list.</p-footer>
+<p-dataTable [value]="users" sortField="name" [sortOrder]="1"
+[rows]="10" [paginator]="true">
+
     <p-column field="name" header="Name" sortable="true" ></p-column>
     <p-column field="address" header="Address" sortable="true" ></p-column>
     <p-column field="city" header="City" sortable="true"></p-column>
+    <p-column field="_id" header="Index"></p-column>
     <p-column  header="Action">
-      <ng-template let-i="rowIndex" pTemplate="body">
-          <span (click)="userEdit(users,i)">Edit</span>
+      <ng-template let-user="rowData" let-i="rowIndex" pTemplate="body">
+          <span (click)="userEdit(user,i)">Edit</span>
       </ng-template>
   </p-column>
 </p-dataTable>
