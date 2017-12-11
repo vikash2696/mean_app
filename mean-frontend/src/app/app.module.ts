@@ -22,7 +22,7 @@ const routes : Routes  = [{
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
+    UserComponent, 
     NavComponent,
     HeaderComponent,
     FooterComponent

@@ -1,6 +1,7 @@
  <input type="button" (click)="openFormTest()" value="New">
  <input type="button" (click)="HideRegisterForm()" value="List">
 <div *ngIf="showDiv">
+  {{ registerForm.value | json}}
   <form [formGroup]=registerForm (ngSubmit)="registerData()">
       <div class="form-field">
         <input type="text" pInputText formControlName="name" placeholder="First Name"> 
@@ -41,4 +42,15 @@
 
 </div>
 
-
+<!-- Modal Trigger -->
+   <!-- Modal Structure -->
+  <div id="modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
+<button data-target="modal" class="btn modal-trigger">Modal</button>
